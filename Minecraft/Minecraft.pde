@@ -8,12 +8,14 @@ float yoff;
 
 float speed = 0;
 
+PeasyCam cam;
+
 void setup() {
   size(600,600,P3D);
   
   cols = width / w;
   rows = height / w;
-  
+  cam = new PeasyCam(this, 500);
 }
 
 void draw() {
@@ -21,8 +23,8 @@ void draw() {
   background(135, 206, 250);
   translate(width, height/5);
   rotateX(PI/3);
-  
-  speed -= 0.08;
+  createTower(5);
+  //speed -= 0.08;
   
   yoff = speed;
   
@@ -37,8 +39,9 @@ void draw() {
       }else{
         fill(0,120,0);
       }
-      box(w, w, r);
-      translate(w, 0, 0);
+      //box(w, w, r);
+      createTower(10);
+      //translate(w, 0, 0);
       
       
       xoff += 0.5;
@@ -46,4 +49,14 @@ void draw() {
     yoff += 0.5;
   }
   //endShape();
+}
+
+
+void createTower(int x){
+  for(int i = 0; i < x; i++){
+    translate(0,0,-w);
+    box(w,w,w);
+    
+  }
+  translate(0,0,w*x);
 }
