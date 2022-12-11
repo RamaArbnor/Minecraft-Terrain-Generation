@@ -1,3 +1,5 @@
+import peasy.*;
+
 float w = 30;
 
 float cols;
@@ -8,26 +10,35 @@ float yoff;
 
 float speed = 0;
 
+PeasyCam cam;
+
+boolean fly = false;
+
 void setup() {
   size(600,600,P3D);
   
-  cols = width / w;
-  rows = height / w;
+  cols = 600 / w;
+  rows = 600 / w;
+  
+  cam = new PeasyCam(this, -500);
   
 }
 
 void draw() {
 
   background(135, 206, 250);
-  translate(width, 600, -1000);
+  translate(height/2, width/2, -800);
   rotateX(PI/3);
-  stroke(255,255,255);
-  speed -= 0.04;
+  //stroke(255,255,255);
+  
+  if(fly)
+    speed -= 0.04;
   
   yoff = speed;
 
 
   yoff = speed;
+  //beginShape();
   for(int y = 0; y < rows; y++){
     xoff = 0;
     translate(-w*rows,w,0);
@@ -48,6 +59,7 @@ void draw() {
         yoff += 0.01;
 
   }
+  //endShape();
 
 }
 
@@ -61,4 +73,9 @@ void createTower(int x){
 
   //translate(w, 0, 0);
 
+}
+
+void keyPressed() {
+  //speed -= 0.02;
+  fly = !fly;
 }
