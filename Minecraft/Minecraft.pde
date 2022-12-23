@@ -15,7 +15,7 @@ PeasyCam cam;
 boolean fly = false;
 
 void setup() {
-  size(600,600,P3D);
+  size(1200,800,P3D);
   
   cols = 600 / w;
   rows = 600 / w;
